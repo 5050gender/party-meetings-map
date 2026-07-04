@@ -10,6 +10,15 @@
 <style>
   html, body { height: 100%; margin: 0; font-family: Arial, Helvetica, sans-serif; direction: rtl; }
   #map { height: 100%; width: 100%; }
+  body.has-toggle #map { height: calc(100% - 48px); }
+  #controls-bar {
+    display: none; height: 48px; width: 100%;
+    align-items: center; justify-content: center;
+    background: #fff; border-top: 1px solid #ddd;
+    font-size: 14px; box-sizing: border-box;
+  }
+  body.has-toggle #controls-bar { display: flex; }
+  #controls-bar label { display: flex; align-items: center; gap: 8px; cursor: pointer; }
   .meeting-pin { background: transparent; border: none; }
   .popup-title { font-weight: bold; font-size: 15px; margin-bottom: 4px; }
   .popup-party { color: #555; font-size: 13px; margin-bottom: 6px; }
@@ -26,6 +35,7 @@
     background: #fff; padding: 8px 12px; border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.3); font-size: 13px;
   }
+  body.has-toggle #legend { bottom: 68px; }
   #legend div { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
   #legend span.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
   #count {
@@ -33,18 +43,13 @@
     background: #fff; padding: 6px 12px; border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.3); font-size: 13px;
   }
-  #priority-toggle-box {
-    position: absolute; bottom: 20px; left: 10px; z-index: 1000;
-    background: #fff; padding: 6px 12px; border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.3); font-size: 13px;
-  }
-  #priority-toggle-box label { display: flex; align-items: center; gap: 6px; cursor: pointer; }
+
 </style>
 </head>
 <body>
 <div id="map"></div>
+<div id="controls-bar"></div>
 <div id="count"></div>
-<div id="priority-toggle-box"></div>
 <div id="legend"></div>
 
 <script src="vendor/leaflet.js"></script>
@@ -114,8 +119,10 @@ renderMeetings(false);
 
 const hasLeaderMeetings = MEETINGS.some(m => m.leader_appearance);
 if (hasLeaderMeetings) {
-  const toggleBox = document.getElementById('priority-toggle-box');
-  toggleBox.innerHTML = `
+  document.body.classList.add('has-toggle');
+  map.invalidateSize();
+  const controlsBar = document.getElementById('controls-bar');
+  controlsBar.innerHTML = `
     <label>
       <input type="checkbox" id="priority-toggle" />
       <span>הצג רק פגישות עם ראש/ת המפלגה</span>
