@@ -59,7 +59,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   maxZoom: 18,
 }).addTo(map);
 
-const clusterGroup = L.markerClusterGroup({ showCoverageOnHover: false });
+const clusterGroup = L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 20 });
 
 let plotted = 0;
 MEETINGS.forEach(m => {
