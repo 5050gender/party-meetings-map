@@ -10,10 +10,10 @@
 <style>
   html, body { height: 100%; margin: 0; font-family: Arial, Helvetica, sans-serif; direction: rtl; }
   #map { height: 100%; width: 100%; }
-  body.has-toggle #map { height: calc(100% - 48px); }
   #controls-bar {
-    display: none; height: 48px; width: 100%;
-    align-items: center; justify-content: center;
+    display: none; width: 100%;
+    flex-direction: column; align-items: center; justify-content: center;
+    gap: 6px; padding: 10px 0;
     background: #fff; border-top: 1px solid #ddd;
     font-size: 14px; box-sizing: border-box;
   }
@@ -35,7 +35,6 @@
     background: #fff; padding: 8px 12px; border-radius: 6px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.3); font-size: 13px;
   }
-  body.has-toggle #legend { bottom: 68px; }
   #legend div { display: flex; align-items: center; gap: 6px; margin: 3px 0; }
   #legend span.dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
   #count {
@@ -102,36 +101,69 @@ function buildMarker(m) {
   return marker;
 }
 
-function renderMeetings(priorityOnly) {
+function sevenDaysFromNowStr() {
+  const d = new Date();
+  d.setDate(d.getDate() + 7);
+  return d.toISOString().slice(0, 10);
+}
+
+function renderMeetings() {
+  const priorityOnly = document.getElementById('priority-toggle')?.checked;
+  const weekOnly = document.getElementById('week-toggle')?.checked;
+
   clusterGroup.clearLayers();
-  const source = priorityOnly ? MEETINGS.filter(m => m.leader_appearance) : MEETINGS;
+  let source = MEETINGS;
+  if (priorityOnly) source = source.filter(m => m.leader_appearance);
+  if (weekOnly) source = source.filter(m => m.date <= sevenDaysFromNowStr());
+
   let plotted = 0;
   source.forEach(m => {
     if (m.lat == null || m.lon == null) return;
     plotted++;
     clusterGroup.addLayer(buildMarker(m));
   });
-  const suffix = priorityOnly ? ' (בכירים בלבד)' : '';
+
+  const labels = [];
+  if (priorityOnly) labels.push('בכירים בלבד');
+  if (weekOnly) labels.push('השבוע הקרוב בלבד');
+  const suffix = labels.length ? ` (${labels.join(', ')})` : '';
   document.getElementById('count').textContent = `${plotted} / ${source.length} אירועים על המפה${suffix}`;
 }
 
-renderMeetings(false);
+renderMeetings();
 
 const hasLeaderMeetings = MEETINGS.some(m => m.leader_appearance);
+let controlsHtml = '';
 if (hasLeaderMeetings) {
-  document.body.classList.add('has-toggle');
-  map.invalidateSize();
-  const controlsBar = document.getElementById('controls-bar');
-  controlsBar.innerHTML = `
+  controlsHtml += `
     <label>
       <input type="checkbox" id="priority-toggle" />
       <span>הצג רק פגישות עם ראש/ת המפלגה</span>
     </label>
   `;
-  document.getElementById('priority-toggle').addEventListener('change', (e) => {
-    renderMeetings(e.target.checked);
-  });
 }
+controlsHtml += `
+  <label>
+    <input type="checkbox" id="week-toggle" />
+    <span>פגישות בשבוע הקרוב בלבד</span>
+  </label>
+`;
+
+document.body.classList.add('has-toggle');
+const controlsBar = document.getElementById('controls-bar');
+controlsBar.innerHTML = controlsHtml;
+
+function layoutControlsBar() {
+  const barHeight = controlsBar.offsetHeight;
+  document.getElementById('map').style.height = `calc(100% - ${barHeight}px)`;
+  document.getElementById('legend').style.bottom = `${barHeight + 20}px`;
+  map.invalidateSize();
+}
+layoutControlsBar();
+
+document.getElementById('week-toggle').addEventListener('change', renderMeetings);
+const priorityToggleEl = document.getElementById('priority-toggle');
+if (priorityToggleEl) priorityToggleEl.addEventListener('change', renderMeetings);
 
 const legend = document.getElementById('legend');
 Object.entries(PARTY_COLORS).forEach(([party, color]) => {
