@@ -88,6 +88,9 @@ function buildMarker(m) {
   const dateLine = m.date + (m.time ? ` · ${m.time}` : '');
   const placeLine = [m.address, m.city].filter(Boolean).join(', ');
   const leaderLine = isLeader ? `<div class="popup-line popup-leader">⭐ ראש/ת המפלגה בפגישה זו</div>` : '';
+  const registerButton = m.registration_link
+    ? `<a class="popup-register" href="${m.registration_link}" target="_blank" rel="noopener noreferrer">להרשמה</a>`
+    : '';
 
   const popupHtml = `
     <div class="popup-title">${m.meeting_name}</div>
@@ -95,7 +98,7 @@ function buildMarker(m) {
     ${leaderLine}
     <div class="popup-line">📅 ${dateLine}</div>
     <div class="popup-line">📍 ${placeLine || m.city || ''}</div>
-    <a class="popup-register" href="${m.registration_link}" target="_blank" rel="noopener noreferrer">להרשמה</a>
+    ${registerButton}
   `;
   marker.bindPopup(popupHtml);
   return marker;
