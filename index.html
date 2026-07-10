@@ -61,12 +61,12 @@ const MEETINGS = [{"party": "ביחד – נפתלי בנט", "meeting_name": "�
 // Add new parties here as they come up; do not reassign existing ones.
 const KNOWN_PARTY_COLORS = {
   "ישר! עם איזנקוט": "#1a73e8",   // blue
-  "ביחד – נפתלי בנט": "#e81a9d",  // pink
+  "ביחד – נפתלי בנט": "#0f9e8e",  // teal
   "הדמוקרטים": "#1ae87a",         // green
   "הציונות הדתית": "#e8c11a",     // yellow
   "יש עתיד": "#a01ae8",           // purple
 };
-const FALLBACK_PALETTE = ["#0f9e8e", "#7a4b1a", "#1ac8e8"];
+const FALLBACK_PALETTE = ["#7a4b1a", "#1ac8e8"];
 function hashColor(str) {
   let hash = 0;
   for (let i = 0; i < str.length; i++) hash = (hash * 31 + str.charCodeAt(i)) >>> 0;
