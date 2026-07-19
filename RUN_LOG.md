@@ -1,5 +1,12 @@
 # Run Log
 
+## 2026-07-19
+- Added: 0
+- Updated: 0
+- Removed (date passed): 0
+- Removed (no longer listed on source, possibly cancelled): 0
+- Total upcoming meetings: 72
+
 ## 2026-07-18
 - Added: 3
   - 2026-08-09 | ישר! עם איזנקוט | אורית פרקש הכהן ותאיר איפרגן מגיעות לעתלית | הרקפת 56, עתלית
