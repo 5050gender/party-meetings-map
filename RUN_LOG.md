@@ -1,5 +1,16 @@
 # Run Log
 
+## 2026-07-20
+- Added: 2
+  - 2026-08-05 | ביחד – נפתלי בנט | שיחה פתוחה על עתיד המדינה עם ברוריה נעים ארמן | משפחת יפלח רחוב בתי ראשונים, מרחביה (מושב)
+  - 2026-08-13 | ביחד – נפתלי בנט | שיחה פתוחה על עתיד המדינה עם ולדימיר בליאק | גבעת הכלניות 137, רמות מאיר
+- Updated: 0
+- Removed (date passed): 2
+  - 2026-07-19 | ישר! עם איזנקוט | Shaul Meridor in Jerusalem | Dan Street 8, 3rd entrance, Grey Gate, 2nd floor, Jerusalem
+  - 2026-07-19 | הדמוקרטים | יאיר גולן | 19.7 | גני תקווה | גני תקווה
+- Removed (no longer listed on source, possibly cancelled): 0
+- Total upcoming meetings: 72
+
 ## 2026-07-19
 - Added: 0
 - Updated: 0
