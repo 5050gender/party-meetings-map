@@ -1,5 +1,13 @@
 # Run Log
 
+## 2026-08-02
+- Added: 0
+- Updated: 0
+- Removed (date passed): 1
+  - 2026-08-01 | ישר! עם איזנקוט | שאול מרידור מגיע לרמת השרון | גמלא 12, רמת השרון
+- Removed (no longer listed on source, possibly cancelled): 0
+- Total upcoming meetings: 81
+
 ## 2026-08-01
 - Added: 1
   - 2026-08-10 | ישר! עם איזנקוט | יורם כהן מגיע למעלה גמלא | מועדון, מעלה גמלא
