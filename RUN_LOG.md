@@ -1,5 +1,13 @@
 # Run Log
 
+## 2026-08-16
+- Added: 0
+- Updated: 0
+- Removed (date passed): 1
+  - 2026-08-15 | ישר! עם איזנקוט | דבורה שריפיאן בכר ומתן כהנא מגיעים לגני תקווה | בארי 13, גני תקווה
+- Removed (no longer listed on source, possibly cancelled): 0
+- Total upcoming meetings: 113
+
 ## 2026-08-15
 - Added: 0
 - Updated: 1
