@@ -1,5 +1,13 @@
 # Run Log
 
+## 2026-08-29
+- Added: 0
+- Updated: 0
+- Removed (date passed): 1
+  - 2026-08-28 | ישר! עם איזנקוט | דבורה שריפיאן בכר מגיעה לגבעת אלה | ״ברמוזה״, גבעת אלה
+- Removed (no longer listed on source, possibly cancelled): 0
+- Total upcoming meetings: 163
+
 ## 2026-08-28
 - Added: 6
   - 2026-09-17 | ביחד – נפתלי בנט | מפגש הכנה ליום הבחירות עם חבר הכנסת משה טור-פז ושחר ורון | רחוב צאלון 6, אור יהודה
