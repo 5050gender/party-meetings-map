@@ -1,6 +1,13 @@
 # Run Log
 
 ## 2026-09-19
+- Added: 0
+- Updated: 0
+- Removed (date passed): 0
+- Removed (no longer listed on source, possibly cancelled): 0
+- Total upcoming meetings: 144
+
+## 2026-09-19
 - Added: 8
   - 2026-09-22 | ביחד – נפתלי בנט | מפגש פתוח עם חבר הכנסת נאור שירי | הוד השרון
   - 2026-09-30 | ביחד – נפתלי בנט | שיחה פתוחה עם חבר הכנסת נאור שירי | כפר יונה
